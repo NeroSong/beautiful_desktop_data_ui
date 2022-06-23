@@ -45,7 +45,7 @@ class _CPieChartState extends State<CPieChart> {
       switch (i) {
         case 0:
           return PieChartSectionData(
-            color: const Color(0xff0293ee),
+            color: const Color(0xff16a085),
             value: 40,
             title: '40%',
             radius: radius,
@@ -56,7 +56,7 @@ class _CPieChartState extends State<CPieChart> {
           );
         case 1:
           return PieChartSectionData(
-            color: const Color(0xfff8b250),
+            color: const Color(0xff2ecc71),
             value: 30,
             title: '30%',
             radius: radius,
@@ -67,7 +67,7 @@ class _CPieChartState extends State<CPieChart> {
           );
         case 2:
           return PieChartSectionData(
-            color: const Color(0xff845bef),
+            color: const Color(0xff3498db),
             value: 15,
             title: '15%',
             radius: radius,
@@ -78,7 +78,7 @@ class _CPieChartState extends State<CPieChart> {
           );
         case 3:
           return PieChartSectionData(
-            color: const Color(0xff13d38e),
+            color: const Color(0xff9b59b6),
             value: 15,
             title: '15%',
             radius: radius,
