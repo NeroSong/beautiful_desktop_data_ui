@@ -16,91 +16,107 @@ class CLineChart extends StatelessWidget {
 
   LineChartData mainData() {
     return LineChartData(
-      gridData: FlGridData(
-        show: true,
-        drawVerticalLine: true,
-        horizontalInterval: 1,
-        verticalInterval: 1,
-        getDrawingHorizontalLine: (value) {
-          return FlLine(
-            color: Colors.white30,
-            strokeWidth: 1,
-          );
-        },
-        // getDrawingVerticalLine: (value) {
-        //   return FlLine(
-        //     color: const Color(0xff37434d),
-        //     strokeWidth: 1,
-        //   );
-        // },
-      ),
-      titlesData: FlTitlesData(
-        show: true,
-        rightTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
+        gridData: FlGridData(
+          show: true,
+          drawVerticalLine: true,
+          horizontalInterval: 1,
+          verticalInterval: 1,
+          getDrawingHorizontalLine: (value) {
+            return FlLine(
+              color: Colors.white30,
+              strokeWidth: 1,
+            );
+          },
+          // getDrawingVerticalLine: (value) {
+          //   return FlLine(
+          //     color: const Color(0xff37434d),
+          //     strokeWidth: 1,
+          //   );
+          // },
         ),
-        topTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: true,
-            reservedSize: 30,
-            interval: 1,
-            getTitlesWidget: bottomTitleWidgets,
+        titlesData: FlTitlesData(
+          show: true,
+          rightTitles: AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
           ),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: true,
-            interval: 1,
-            getTitlesWidget: leftTitleWidgets,
-            reservedSize: 42,
+          topTitles: AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
           ),
-        ),
-      ),
-      borderData: FlBorderData(
-          show: false,
-          border: Border.all(color: const Color(0xff37434d), width: 1)),
-      minX: 0,
-      maxX: 11,
-      minY: 0,
-      maxY: 6,
-      lineBarsData: [
-        LineChartBarData(
-          spots: const [
-            FlSpot(0, 3),
-            FlSpot(2.6, 2),
-            FlSpot(4.9, 5),
-            FlSpot(6.8, 3.1),
-            FlSpot(8, 4),
-            FlSpot(10, 4),
-            FlSpot(11, 5.5),
-          ],
-          isCurved: true,
-          gradient: LinearGradient(
-            colors: gradientColors,
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
+          bottomTitles: AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: true,
+              reservedSize: 30,
+              interval: 1,
+              getTitlesWidget: bottomTitleWidgets,
+            ),
           ),
-          barWidth: 3,
-          isStrokeCapRound: true,
-          dotData: FlDotData(
-            show: false,
-          ),
-          belowBarData: BarAreaData(
-            show: true,
-            gradient: LinearGradient(
-              colors: gradientColors
-                  .map((color) => color.withOpacity(0.3))
-                  .toList(),
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
+          leftTitles: AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: true,
+              interval: 1,
+              getTitlesWidget: leftTitleWidgets,
+              reservedSize: 38,
             ),
           ),
         ),
-      ],
-    );
+        borderData: FlBorderData(
+            show: false,
+            border: Border.all(color: const Color(0xff37434d), width: 1)),
+        minX: 0,
+        maxX: 11,
+        minY: 0,
+        maxY: 6,
+        lineBarsData: [
+          LineChartBarData(
+            spots: const [
+              FlSpot(0, 3),
+              FlSpot(2.6, 2),
+              FlSpot(4.9, 5),
+              FlSpot(6.8, 3.1),
+              FlSpot(8, 4),
+              FlSpot(10, 4),
+              FlSpot(11, 5.5),
+            ],
+            isCurved: true,
+            gradient: LinearGradient(
+              colors: gradientColors,
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
+            barWidth: 3,
+            isStrokeCapRound: true,
+            dotData: FlDotData(
+              show: false,
+            ),
+            belowBarData: BarAreaData(
+              show: true,
+              gradient: LinearGradient(
+                colors: gradientColors
+                    .map((color) => color.withOpacity(0.3))
+                    .toList(),
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+              ),
+            ),
+          ),
+        ],
+        lineTouchData: LineTouchData(
+          getTouchedSpotIndicator: (barData, spotIndexes) {
+            return spotIndexes
+                .map((e) => TouchedSpotIndicatorData(
+                    FlLine(
+                      color: barData.gradient!.colors[0],
+                      strokeWidth: 3,
+                    ),
+                    FlDotData(
+                      getDotPainter: (p0, p1, p2, p3) => FlDotCirclePainter(
+                        color: Color.fromARGB(255, 149, 153, 234),
+                        radius: 5,
+                      ),
+                    )))
+                .toList();
+          },
+        ));
   }
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {

@@ -1,4 +1,5 @@
 import 'package:beautiful_desktop_data_ui/common/config.dart';
+import 'package:beautiful_desktop_data_ui/pages/charts.dart';
 import 'package:beautiful_desktop_data_ui/pages/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
@@ -225,6 +226,7 @@ class _HomePageState extends State<HomePage> {
           physics: NeverScrollableScrollPhysics(),
           children: [
             DashBoardPage(),
+            ChartsPage(),
             ...menuLsName
                 .map((e) => Container(
                       child: Center(
@@ -238,7 +240,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ))
-                .skip(1)
+                .skip(2)
                 .toList()
           ],
         ),
