@@ -1,3 +1,4 @@
+import 'package:beautiful_desktop_data_ui/widgets/c_bar_chart.dart';
 import 'package:beautiful_desktop_data_ui/widgets/c_line_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,7 @@ class _ChartsPageState extends State<ChartsPage> {
         child: Wrap(
           children: [
             ChartCard(size, CLineChart()),
+            ChartCard(size, CBarChart()),
           ],
         ),
       ),

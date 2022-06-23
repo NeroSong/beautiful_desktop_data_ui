@@ -23,16 +23,10 @@ class CLineChart extends StatelessWidget {
           verticalInterval: 1,
           getDrawingHorizontalLine: (value) {
             return FlLine(
-              color: Colors.white30,
+              color: Colors.white54,
               strokeWidth: 1,
             );
           },
-          // getDrawingVerticalLine: (value) {
-          //   return FlLine(
-          //     color: const Color(0xff37434d),
-          //     strokeWidth: 1,
-          //   );
-          // },
         ),
         titlesData: FlTitlesData(
           show: true,
@@ -60,8 +54,8 @@ class CLineChart extends StatelessWidget {
           ),
         ),
         borderData: FlBorderData(
-            show: false,
-            border: Border.all(color: const Color(0xff37434d), width: 1)),
+            show: true,
+            border: Border(bottom: BorderSide(color: Colors.white54))),
         minX: 0,
         maxX: 11,
         minY: 0,
